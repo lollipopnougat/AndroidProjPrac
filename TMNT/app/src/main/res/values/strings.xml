@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">TMNT</string>
+    <string name="Leo">Leonardo</string>
+    <string name="Don">Donatello</string>
+    <string name="Raph">Raphael</string>
+    <string name="Mike">Michelangelo</string>
+</resources>
