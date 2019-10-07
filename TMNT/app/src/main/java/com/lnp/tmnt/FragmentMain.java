@@ -3,6 +3,7 @@ package com.lnp.tmnt;
 import android.content.Context;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,10 +13,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 import androidx.fragment.app.Fragment;
 
+import java.io.IOException;
+
 public class FragmentMain extends Fragment {
+    private static final String TAG = "Test";
     private MediaPlayer player;
     private View view;
     private int currentSelectItemName = R.string.Leo;
+    private int currentPlayingSec;
+    private boolean isStopped = false;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -35,12 +41,22 @@ public class FragmentMain extends Fragment {
         imgBtn = view.findViewById(R.id.imgbtn);
         playBtn = view.findViewById(R.id.playbtn);
         playBtn.setOnClickListener(v -> {
+            Log.v(TAG,"player.current:"+player.getCurrentPosition());
             if (player.isPlaying()) {
                 player.pause();
                 playBtn.setImageResource(R.drawable.ic_action_play);
                 Toast.makeText(getContext(), "已暂停", Toast.LENGTH_SHORT).show();
             } else {
+                if(isStopped) {
+                    try {
+                        player.prepare();
+                    } catch (IOException e) {
+                        Toast.makeText(getContext(),e.getMessage(),Toast.LENGTH_SHORT).show();
+                    }
+                    player.seekTo(currentPlayingSec);
+                }
                 player.start();
+                Log.v(TAG,"继续播放");
                 playBtn.setImageResource(R.drawable.ic_action_pause);
                 Toast.makeText(getContext(), "继续播放", Toast.LENGTH_SHORT).show();
             }
@@ -78,16 +94,26 @@ public class FragmentMain extends Fragment {
     public void onResume() {
         super.onResume();
         if (player != null) {
-            player.setLooping(true);
-            player.start();
+            if(!isStopped) {
+                player.setLooping(true);
+                player.start();
+                isStopped = false;
+            }
+
+
         }
     }
 
     @Override
     public void onPause() {
         super.onPause();
-        if (player.isPlaying()) player.stop();
-
+        if (player.isPlaying()) {
+            currentPlayingSec = player.getCurrentPosition();
+            player.stop();
+            isStopped = true;
+            playBtn.setImageResource(R.drawable.ic_action_play);
+            Toast.makeText(getContext(), "已停止", Toast.LENGTH_SHORT).show();
+        }
     }
 
     @Override
