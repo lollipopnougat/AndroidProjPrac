@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">TMNT</string>
+    <string name="Leo">Leonardo</string>
+    <string name="Don">Donatello</string>
+    <string name="Raph">Raphael</string>
+    <string name="Mike">Michelangelo</string>
+    <string name="subtitle_format">$1%s #$2%s</string>
+    <string name="orga">奥尔加·伊兹卡</string>
+    <string name="title_activity_main2">Main2Activity</string>
+    <string name="title_activity_main3">Main3Activity</string>
+    <string name="action_settings">Settings</string>
+</resources>
