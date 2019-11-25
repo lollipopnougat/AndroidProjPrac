@@ -1,0 +1,19 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/teal_littleDark</item>
+        <item name="colorPrimaryDark">@color/teal_dark</item>
+        <item name="colorAccent">@color/pink_deep</item>
+        <item name="android:colorBackground">@color/dark</item>
+        <item name="buttonStyle">@style/BeatBoxButton</item>
+    </style>
+    <style name="BeatBoxButton" parent="android:style/Widget.Holo.Button">
+        <item name="android:background">@drawable/button_beat_box</item>
+        <item name="android:textColor">@color/light</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:minHeight">48dip</item>
+        <item name="android:minWidth">64dip</item>
+    </style>
+</resources>

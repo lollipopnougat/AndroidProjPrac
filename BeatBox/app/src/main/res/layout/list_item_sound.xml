@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="8dp"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+    <com.balysv.materialripple.MaterialRippleLayout
+        android:id="@+id/ripple"
+        app:mrl_rippleColor="@color/teal_light"
+        app:mrl_rippleRoundedCorners="100dp"
+        app:mrl_rippleOverlay="true"
+        app:mrl_rippleAlpha="0.3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    <Button
+        android:id="@+id/button"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
+        tools:text="Sound name"/>
+    </com.balysv.materialripple.MaterialRippleLayout>
+</FrameLayout>
+
